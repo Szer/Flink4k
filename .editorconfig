@@ -1,0 +1,13 @@
+root = true
+
+[*]
+charset = utf-8
+
+[*.{kt,kts}]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+# noinspection EditorConfigKeyCorrectness
+continuation_indent_size = 4
+# noinspection EditorConfigKeyCorrectness
+disabled_rules=no-wildcard-imports
