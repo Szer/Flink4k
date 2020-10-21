@@ -7,7 +7,8 @@ import kotlin.test.Test
 import kotlin.test.assertTrue
 
 class LibraryTest {
-    @Test fun `name and id set up correctly`() {
+    @Test
+    fun `name and id set up correctly`() {
         assertTrue(true, "someLibraryMethod should return 'true'")
     }
 }
