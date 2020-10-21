@@ -1,1 +1,1 @@
-rootProject.name = "flink4kotlin"
+rootProject.name = "flink4k"

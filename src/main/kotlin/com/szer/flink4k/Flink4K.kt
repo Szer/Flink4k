@@ -1,4 +1,4 @@
-package com.szer.flink4kotlin
+package com.szer.flink4k
 
 import org.apache.flink.api.common.functions.FilterFunction
 import org.apache.flink.api.common.functions.FlatMapFunction
@@ -21,33 +21,21 @@ import java.util.UUID
 import java.util.concurrent.TimeUnit
 
 @Suppress("MemberVisibilityCanBePrivate")
-object Flink4Kotlin {
+object Flink4K {
 
     inline fun <reified A> typeInfo(): TypeInformation<A> =
         TypeInformation.of(A::class.java)
 
     fun <A> SingleOutputStreamOperator<A>.setUidAndName(id: String?, name: String? = id): SingleOutputStreamOperator<A> {
-        val withId =
-            if (id != null)
-                this.uid(id)
-            else
-                this
-        return if (name != null)
-            withId.name(name)
-        else
-            withId
+        id?.apply { uid(this) }
+        name?.apply { name(this) }
+        return this
     }
 
     fun <A> DataStreamSink<A>.setUidAndName(id: String?, name: String? = id): DataStreamSink<A> {
-        val withId =
-            if (id != null)
-                this.uid(id)
-            else
-                this
-        return if (name != null)
-            withId.name(name)
-        else
-            withId
+        id?.apply { uid(this) }
+        name?.apply { name(this) }
+        return this
     }
 
     fun <T> SingleOutputStreamOperator<T>.setParallelismK(parallelism: Int?): SingleOutputStreamOperator<T> =
