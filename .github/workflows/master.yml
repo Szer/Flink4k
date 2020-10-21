@@ -1,0 +1,22 @@
+name: CI Master
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: burrunan/gradle-cache-action@v1
+        name: Build
+        with:
+          job-id: build
+          arguments: build --info --stacktrace
+          gradle-version: wrapper
